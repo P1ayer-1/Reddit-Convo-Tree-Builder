@@ -110,7 +110,7 @@ class OldredditSpider(scrapy.Spider):
 
         for comment in comments:
             comment_id = comment['comment_id']
-            comment_text = response.css(f'form[id^="form-{comment_id}"] p::text').getall()
+            comment_text = response.css(f'form[id^="form-{comment_id}"] p::text, form[id^="form-{comment_id}"] a::text, form[id^="form-{comment_id}"] code::text').getall()
             if comment_text:
                 top_comments.append({'comment_id': comment_id, 'comment_text': comment_text})
 
