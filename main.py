@@ -1,18 +1,13 @@
 from scrapyd_api import ScrapydAPI
+import os
 
 
 SUBREDDIT = "amitheasshole"
 
-csv_files = [
-    "csv_files/split_csv_0.csv",
-    "csv_files/split_csv_1.csv",
-    "csv_files/split_csv_2.csv",
-    "csv_files/split_csv_3.csv",
-    "csv_files/split_csv_4.csv",
-    "csv_files/split_csv_5.csv",
-    "csv_files/split_csv_6.csv",
-    "csv_files/split_csv_7.csv",
-]
+
+CSV_DIR = "csv_files"
+
+csv_files = [CSV_DIR + "/" + f for f in os.listdir(CSV_DIR) if f.endswith(".csv")]
 
 
 
@@ -23,4 +18,4 @@ for csv_file in csv_files:
     settings = {'FEED_URI': "scraped_data/{}_{}.jsonl".format(SUBREDDIT, csv_file.split("/")[-1].split(".")[0])}
 
     
-    job_id = scrapyd.schedule("reddit", "oldreddit", csv_file=csv_file, settings=settings)
+    job_id = scrapyd.schedule("reddit_scraper_OA", "oldreddit", csv_file=csv_file, settings=settings)

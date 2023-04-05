@@ -3,6 +3,8 @@ import csv
 from scrapy.loader import ItemLoader
 from ..items import RedditScraperOaItem
 
+
+
 class OldredditSpider(scrapy.Spider):
     name = "oldreddit"
     allowed_domains = ["old.reddit.com"]
@@ -166,7 +168,7 @@ class OldredditSpider(scrapy.Spider):
 
 
         post_karma = response.xpath('/html/body/div[3]/div[2]/div/div[2]//text()').extract()
-        post_score = int(post_karma[0])
+        post_score = int(post_karma[0].replace(',', ''))
         item_loader.add_value("score", post_score)
 
         upvote_percentage = post_karma[-1].strip().replace('%', '').replace('(', '').replace(')', '').replace('upvoted', '')

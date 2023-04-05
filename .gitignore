@@ -1,0 +1,11 @@
+csv_files/
+data/
+dbs/
+project.egg-info/
+scraped_data/
+eggs/
+logs/
+build/
+reddit_scraper_OA/__pycache__/
+reddit_scraper_OA/spiders/__pycache__/
+setup.py
