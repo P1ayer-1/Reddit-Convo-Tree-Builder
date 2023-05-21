@@ -4,7 +4,7 @@
 ## Run
 
 
-### Get csv
+### Get csv file
 
 Use BigQuery to get a csv file
 
@@ -29,10 +29,12 @@ I use 1 per concurrent request. The current configuration requires at least 4k p
 - https://github.com/mmpx12/proxy-list/blob/master/https.txt 
 - https://github.com/constverum/ProxyBroker
 
-### Update settings.py with the path to your proxy list
+Proxies should be in this format "https://hostname:port" or "http://hostname:port"
+
+Update settings.py with the path to your proxy list
 
 ### Upload spider to scrapyd 
-```scrapy```
+```scrapyd```
 
 ```scrapyd-deploy --build-egg=/dev/null```
 
